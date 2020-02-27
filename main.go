@@ -24,6 +24,6 @@ func main() {
 
 // Handler
 func merge(c echo.Context) error {
-	exec.Command("bash","-c","exec.sh")
+	exec.Command("bash","exec.sh")
 	return c.JSON(http.StatusOK, map[string]interface{}{"code":0,"message":"succeed"})
 }
