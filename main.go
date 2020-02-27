@@ -5,6 +5,7 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	"net/http"
 	"os/exec"
+	"fmt"
 )
 
 func main() {
@@ -24,6 +25,12 @@ func main() {
 
 // Handler
 func merge(c echo.Context) error {
-	exec.Command("bash","exec.sh")
-	return c.JSON(http.StatusOK, map[string]interface{}{"code":0,"message":"succeed"})
+    command := "exec.sh"
+    cmd := exec.Command("/bin/bash", command)
+    _, err := cmd.Output()
+    if err != nil {
+        fmt.Printf("Execute Shell:%s failed with error:%s\n", command, err.Error())
+        return err
+    }
+    return c.JSON(http.StatusOK, map[string]interface{}{"code":0,"message":"succeed"})
 }
