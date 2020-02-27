@@ -19,11 +19,11 @@ func main() {
 	e.GET("/merge", merge)
 
 	// Start server
-	e.Logger.Fatal(e.Start(":1323"))
+	e.Logger.Fatal(e.Start(":5654"))
 }
 
 // Handler
 func merge(c echo.Context) error {
-	exec.Command("bash -c","exec.sh")
+	exec.Command("bash","-c","exec.sh")
 	return c.JSON(http.StatusOK, map[string]interface{}{"code":0,"message":"succeed"})
 }
