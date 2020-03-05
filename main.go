@@ -19,7 +19,10 @@ func main() {
 	e.GET("/merge", merge)
 
 	// Start server
-	e.Logger.Fatal(e.Start(":5654"))
+	path := ConfigPath()
+	fmt.Println("path: ",path)
+	Init(path)
+	e.Logger.Fatal(e.Start(confs["port"]))
 }
 
 // Handler
