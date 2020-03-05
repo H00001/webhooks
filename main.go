@@ -22,7 +22,7 @@ func main() {
 	path := ConfigPath()
 	fmt.Println("path: ",path)
 	Init(path)
-	e.Logger.Fatal(e.Start(confs["port"]))
+	e.Logger.Fatal(e.Start(string(confs["port"])))
 }
 
 // Handler
