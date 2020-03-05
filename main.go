@@ -1,11 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"net/http"
 	"os/exec"
-	"fmt"
+	"strings"
 )
 
 func main() {
@@ -22,7 +23,7 @@ func main() {
 	path := ConfigPath()
 	fmt.Println("path: ",path)
 	Init(path)
-	e.Logger.Fatal(e.Start(string(confs["port"])))
+	e.Logger.Fatal(e.Start(strings.Trim(string(confs["port"]),"\"")))
 }
 
 // Handler
