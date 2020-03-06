@@ -35,8 +35,7 @@ func merge(c echo.Context) error {
 		_, err := cmd.Output()
 		if err != nil {
 			fmt.Printf("Execute Shell:%s failed with error:%s\n", command, err.Error())
-			return err
 		}
 	}()
-    return c.JSON(http.StatusOK, map[string]interface{}{"code":0,"message":"succeed"})
+        return c.JSON(http.StatusOK, map[string]interface{}{"code":0,"message":"succeed"})
 }
